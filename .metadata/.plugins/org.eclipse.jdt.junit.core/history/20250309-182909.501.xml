@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CarServiceTest" project="CarRentalSystem1" tests="9" started="9" failures="1" errors="0" ignored="0">
+  <testsuite name="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="3.716" displayname="CarServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]">
+    <testsuite name="testUpdateCar(com.CarRentalSystem.CarRental.Testing.CarServiceTest)" time="3.533" displayname="testUpdateCar(String)" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testUpdateCar(java.lang.String)]">
+      <testcase name="testUpdateCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="3.533" dynamicTest="true" displayname="[1] brand=BrandA" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testUpdateCar(java.lang.String)]/[test-template-invocation:#1]"/>
+      <testcase name="testUpdateCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.01" dynamicTest="true" displayname="[2] brand=BrandB" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testUpdateCar(java.lang.String)]/[test-template-invocation:#2]"/>
+    </testsuite>
+    <testcase name="testGetAllCars" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.069" displayname="testGetAllCars()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testGetAllCars()]">
+      <failure>
+        <expected>10</expected>
+        <actual>2</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;10&gt; but was: &lt;2&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)&#13;
+	at com.CarRentalSystem.CarRental.Testing.CarServiceTest.testGetAllCars(CarServiceTest.java:53)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testsuite name="testDeleteCar(com.CarRentalSystem.CarRental.Testing.CarServiceTest)" time="0.012" displayname="testDeleteCar(int)" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testDeleteCar(int)]">
+      <testcase name="testDeleteCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.012" dynamicTest="true" displayname="[1] id=1" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testDeleteCar(int)]/[test-template-invocation:#1]"/>
+      <testcase name="testDeleteCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.005" dynamicTest="true" displayname="[2] id=2" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testDeleteCar(int)]/[test-template-invocation:#2]"/>
+    </testsuite>
+    <testsuite name="testGetCarById(com.CarRentalSystem.CarRental.Testing.CarServiceTest)" time="0.012" displayname="testGetCarById(int)" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testGetCarById(int)]">
+      <testcase name="testGetCarById" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.012" dynamicTest="true" displayname="[1] id=1" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testGetCarById(int)]/[test-template-invocation:#1]"/>
+      <testcase name="testGetCarById" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.007" dynamicTest="true" displayname="[2] id=2" parameters="int" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testGetCarById(int)]/[test-template-invocation:#2]"/>
+    </testsuite>
+    <testsuite name="testAddCar(com.CarRentalSystem.CarRental.Testing.CarServiceTest)" time="0.009" displayname="testAddCar(String)" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testAddCar(java.lang.String)]">
+      <testcase name="testAddCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.009" dynamicTest="true" displayname="[1] brand=BrandA" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testAddCar(java.lang.String)]/[test-template-invocation:#1]"/>
+      <testcase name="testAddCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.005" dynamicTest="true" displayname="[2] brand=BrandB" parameters="java.lang.String" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[test-template:testAddCar(java.lang.String)]/[test-template-invocation:#2]"/>
+    </testsuite>
+  </testsuite>
+</testrun>

@@ -1,0 +1,5 @@
+package com.CarRentalSystem.CarRental.Controller;
+
+public class PaymentController {
+
+}

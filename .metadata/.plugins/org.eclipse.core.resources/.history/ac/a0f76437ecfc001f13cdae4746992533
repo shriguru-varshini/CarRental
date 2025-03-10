@@ -1,0 +1,125 @@
+package com.CarRentalSystem.CarRental.Testing;
+
+import com.CarRentalSystem.CarRental.Models.Payment;
+import com.CarRentalSystem.CarRental.Repositories.PaymentRepository;
+import com.CarRentalSystem.CarRental.service.PaymentService;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.math.BigDecimal;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+public class PaymentServiceTest {
+
+    @Mock
+    private PaymentRepository paymentRepository;
+
+    @InjectMocks
+    private PaymentService paymentService;
+
+    @SuppressWarnings("deprecation")
+	@BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1, 1, 100.00, 'Credit Card', 'Completed', 'ABC123'",
+        "2, 2, 50.50, 'PayPal', 'Pending', 'XYZ789'"
+    })
+    public void testAddPayment(int userId, int reservationId, BigDecimal amount, String paymentMethod, String paymentStatus, String transactionId) {
+        Payment payment = new Payment();
+        payment.setUserId(userId);
+        payment.setReservationId(reservationId);
+        payment.setAmount(amount);
+        payment.setPaymentMethod(paymentMethod);
+        payment.setPaymentStatus(paymentStatus);
+        payment.setTransactionId(transactionId);
+
+        when(paymentRepository.save(payment)).thenReturn(1);
+
+        int result = paymentService.addPayment(payment);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testGetAllPayments() {
+        List<Payment> payments = List.of(new Payment(), new Payment());
+        when(paymentRepository.findAll()).thenReturn(payments);
+
+        List<Payment> result = paymentService.getAllPayments();
+        assertEquals(2, result.size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2})
+    public void testGetPaymentById(int id) {
+        Payment payment = new Payment();
+        when(paymentRepository.findById(id)).thenReturn(payment);
+
+        Optional<Payment> result = paymentService.getPaymentById(id);
+        assertTrue(result.isPresent());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1, 1, 200.00, 'Credit Card', 'Pending', 'XYZ789'",
+        "2, 2, 300.00, 'PayPal', 'Completed', 'LMN456'"
+    })
+    public void testUpdatePayment(int userId, int reservationId, BigDecimal amount, String paymentMethod, String paymentStatus, String transactionId) {
+        Payment payment = new Payment();
+        payment.setUserId(userId);
+        payment.setReservationId(reservationId);
+        payment.setAmount(amount);
+        payment.setPaymentMethod(paymentMethod);
+        payment.setPaymentStatus(paymentStatus);
+        payment.setTransactionId(transactionId);
+
+        when(paymentRepository.update(payment)).thenReturn(1);
+
+        int result = paymentService.updatePayment(payment);
+        assertEquals(1, result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2})
+    public void testDeletePayment(int id) {
+        when(paymentRepository.delete(id)).thenReturn(1);
+
+        int result = paymentService.deletePayment(id);
+        assertEquals(1, result);
+    }
+
+    // Boundary Test: Minimum and Maximum Payment Amount
+    @ParameterizedTest
+    @CsvSource({
+        "0.01, 'Credit Card', 'Completed', 'MIN123'",
+        "999999999.99, 'PayPal', 'Pending', 'MAX123'"
+    })
+    public void testPaymentAmountBoundaries(BigDecimal amount, String paymentMethod, String paymentStatus, String transactionId) {
+        Payment payment = new Payment();
+        payment.setUserId(1);
+        payment.setReservationId(1);
+        payment.setAmount(amount);
+        payment.setPaymentMethod(paymentMethod);
+        payment.setPaymentStatus(paymentStatus);
+        payment.setTransactionId(transactionId);
+
+        when(paymentRepository.save(payment)).thenReturn(1);
+        
+        int result = paymentService.addPayment(payment);
+        assertEquals(1, result);
+    }
+}

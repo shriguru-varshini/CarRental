@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CarServiceTest" project="CarRentalSystem1" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="2.313" displayname="CarServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]">
+    <testcase name="testUpdateCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="2.282" displayname="testUpdateCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testUpdateCar()]"/>
+    <testcase name="testGetAllCars" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.007" displayname="testGetAllCars()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testGetAllCars()]"/>
+    <testcase name="testDeleteCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.005" displayname="testDeleteCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testDeleteCar()]"/>
+    <testcase name="testGetCarById" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.009" displayname="testGetCarById()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testGetCarById()]"/>
+    <testcase name="testAddCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.005" displayname="testAddCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testAddCar()]"/>
+  </testsuite>
+</testrun>

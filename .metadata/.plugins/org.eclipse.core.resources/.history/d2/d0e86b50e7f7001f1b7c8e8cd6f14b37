@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>JavaScript Book System</title>
+<style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+</style>
+</head>
+<body>
+<h1>Books Available</h1>
+<input type="text" id="searchInput" >
+<button id="searchButton">Submit to Find your book</button>
+<table id="booksTable">
+<tr>
+<th>ID</th>
+<th>Title</th>
+<th>Price</th>
+<th>Author ID</th>
+</tr>
+</table>
+<script>
+        document.getElementById("searchButton").addEventListener("click", function() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            fetch(`/api/books`)
+                .then(response => response.json())
+                .then(books => {
+                    const table = document.getElementById("booksTable");
+                    table.innerHTML = '<tr><th>ID</th><th>Title</th><th>Price</th><th>Author ID</th></tr>';
+                    books.filter(book => book.title.toLowerCase().includes(searchInput))
+                        .forEach(book => {
+                            const row = table.insertRow();
+                            row.insertCell(0).innerText = book.id;
+                            row.insertCell(1).innerText = book.title;
+                            row.insertCell(2).innerText = book.price;
+                            row.insertCell(3).innerText = book.authorId;
+                        });
+                });
+        });
+ 
+        // Fetch and display all books on page load
+        fetch('/api/books')
+            .then(response => response.json())
+            .then(books => {
+                const table = document.getElementById("booksTable");
+                books.forEach(book => {
+                    const row = table.insertRow();
+                    row.insertCell(0).innerText = book.id;
+                    row.insertCell(1).innerText = book.title;
+                    row.insertCell(2).innerText = book.price;
+                    row.insertCell(3).innerText = book.authorId;
+                });
+            });
+</script>
+</body>
+</html>

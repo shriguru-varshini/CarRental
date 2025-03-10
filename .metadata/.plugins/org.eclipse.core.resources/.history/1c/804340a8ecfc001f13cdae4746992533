@@ -1,0 +1,101 @@
+package com.CarRentalSystem.CarRental.Testing;
+
+import com.CarRentalSystem.CarRental.Models.User;
+import com.CarRentalSystem.CarRental.Repositories.UserRepository;
+import com.CarRentalSystem.CarRental.service.UserService;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+public class UserServiceTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserService userService;
+
+    @SuppressWarnings("deprecation")
+	@BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "'John Doe', 'john.doe@example.com', '1234567890', 'password123', 'USER'",
+        "'Jane Doe', 'jane.doe@example.com', '0987654321', 'password456', 'ADMIN'"
+    })
+    public void testAddUser(String name, String email, String phone, String password, String role) {
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setPassword(password);
+        user.setRole(role);
+
+        when(userRepository.save(user)).thenReturn(1);
+
+        int result = userService.addUser(user);
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testGetAllUsers() {
+        List<User> users = List.of(new User(), new User());
+        when(userRepository.findAll()).thenReturn(users);
+
+        List<User> result = userService.getAllUsers();
+        assertEquals(2, result.size());
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2})
+    public void testGetUserById(int id) {
+        User user = new User();
+        when(userRepository.findById(id)).thenReturn(user);
+
+        Optional<User> result = userService.getUserById(id);
+        assertTrue(result.isPresent());
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+        "1, 'John Doe', 'john.doe@example.com', '1234567890', 'password123', 'USER'",
+        "2, 'Jane Doe', 'jane.doe@example.com', '0987654321', 'password456', 'ADMIN'"
+    })
+    public void testUpdateUser(int id, String name, String email, String phone, String password, String role) {
+        User user = new User();
+        user.setId(id);
+        user.setName(name);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setPassword(password);
+        user.setRole(role);
+
+        when(userRepository.update(user)).thenReturn(1);
+
+        int result = userService.updateUser(user);
+        assertEquals(1, result);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {1, 2})
+    public void testDeleteUser(int id) {
+        when(userRepository.delete(id)).thenReturn(1);
+
+        int result = userService.deleteUser(id);
+    }
+}   

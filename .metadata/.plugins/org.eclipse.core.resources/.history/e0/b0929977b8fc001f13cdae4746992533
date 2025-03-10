@@ -1,0 +1,65 @@
+package com.CarRentalSystem.CarRental.Testing;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
+import com.CarRentalSystem.CarRental.Repositories.CarRepository;
+import com.CarRentalSystem.CarRental.service.CarService;
+import com.CarRentalSystem.CarRental.Models.Car;
+import org.junit.jupiter.api.BeforeEach;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.junit.jupiter.api.Test;
+
+import java.util.Optional;
+import java.util.List;
+
+class CarServiceTest {
+   
+	@Mock
+    private CarRepository carRepository;
+
+    @InjectMocks
+    private CarService carService;
+
+    @SuppressWarnings("deprecation")
+	@BeforeEach
+    public void setUp() {
+        MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void testAddCar() {
+        Car car = new Car();
+        when(carRepository.save(car)).thenReturn(1);
+        assertEquals(10, carService.addCar(car));
+    }
+
+    @Test
+    public void testGetAllCars() {
+        List<Car> cars = List.of(new Car(), new Car());
+        when(carRepository.findAll()).thenReturn(cars);
+        assertEquals(10, carService.getAllCars().size());
+    }
+
+    @Test
+    public void testGetCarById() {
+        Car car = new Car();
+        when(carRepository.findById(1)).thenReturn(car);
+        assertTrue(carService.getCarById(1).isPresent());
+    }
+
+    @Test
+    public void testUpdateCar() {
+        Car car = new Car();
+        when(carRepository.update(car)).thenReturn(1);
+        assertEquals(1, carService.updateCar(car));
+    }
+
+    @Test
+    public void testDeleteCar() {
+        when(carRepository.delete(1)).thenReturn(1);
+        assertEquals(1, carService.deleteCar(1));
+    }
+}    

@@ -1,0 +1,38 @@
+package com.onlinebookshop.shop.controller;
+
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.onlinebookshop.shop.model.Book;
+import com.onlinebookshop.shop.service.BookService;
+
+@Controller
+@RequestMapping("/api")
+public class BookController {
+	
+	//inject service layer obj
+	private BookService bookservice;
+	
+	public BookController(BookService bookservice) {
+		this.bookservice = bookservice;
+	}
+
+	@GetMapping("/books/{id}")
+	@ResponseBody
+	public Book fetchBookById(@PathVariable int id){
+		return bookservice.getBookById(id);
+	}
+	
+	//return books.html page
+	@GetMapping
+	public String showBooks() {
+		return "redirect:/books.html"; //load books.html ->static folder
+		
+	}
+
+}

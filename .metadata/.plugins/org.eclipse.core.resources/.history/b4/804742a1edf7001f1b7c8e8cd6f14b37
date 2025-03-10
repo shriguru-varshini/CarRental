@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <title> JavaScript</title>
+</head>
+<body>
+	<h1> Books Available</h1>
+	<ul id = "bookslist'>
+	<script>
+		//fetch books dynamically
+		fetch('/api/books')
+	</script>
+	</ul>
+</body>
+</html>	
+

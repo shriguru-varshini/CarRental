@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CarServiceTest" project="CarRentalSystem1" tests="5" started="5" failures="1" errors="0" ignored="0">
+  <testsuite name="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="4.798" displayname="CarServiceTest" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]">
+    <testcase name="testUpdateCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="4.666" displayname="testUpdateCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testUpdateCar()]"/>
+    <testcase name="testGetAllCars" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.056" displayname="testGetAllCars()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testGetAllCars()]">
+      <failure>
+        <expected>1</expected>
+        <actual>2</actual>
+        org.opentest4j.AssertionFailedError: expected: &lt;1&gt; but was: &lt;2&gt;&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)&#13;
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)&#13;
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:150)&#13;
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:145)&#13;
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:531)&#13;
+	at com.CarRentalSystem.CarRental.Testing.CarServiceTest.testGetAllCars(CarServiceTest.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+
+      </failure>
+    </testcase>
+    <testcase name="testDeleteCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.011" displayname="testDeleteCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testDeleteCar()]"/>
+    <testcase name="testGetCarById" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.026" displayname="testGetCarById()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testGetCarById()]"/>
+    <testcase name="testAddCar" classname="com.CarRentalSystem.CarRental.Testing.CarServiceTest" time="0.019" displayname="testAddCar()" uniqueid="[engine:junit-jupiter]/[class:com.CarRentalSystem.CarRental.Testing.CarServiceTest]/[method:testAddCar()]"/>
+  </testsuite>
+</testrun>

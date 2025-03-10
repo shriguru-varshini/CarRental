@@ -1,0 +1,43 @@
+package com.CarRentalSystem.CarRental.service;
+
+import com.CarRentalSystem.CarRental.Models.User;
+import com.CarRentalSystem.CarRental.Repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+public class UserService {
+
+    @Autowired
+    private UserRepository userRepository;
+
+    // Add a new user
+    public int addUser(User user) {
+        return userRepository.save(user);
+    }
+
+    // Get all users
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    // Get user by ID
+    public Optional<User> getUserById(int id) {
+        try {
+            return Optional.ofNullable(userRepository.findById(id));
+        } catch (Exception e) {
+            return Optional.empty();
+        }
+    }
+
+    // Update user details
+    public int updateUser(User user) {
+        return userRepository.update(user);
+    }
+
+    // Delete a user
+    public int deleteUser(int id) {
+        return userRepository.delete(id);
+    }

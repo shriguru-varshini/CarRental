@@ -1,0 +1,14 @@
+package com.CarRentalSystem.CarRental.Testing;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class CarServiceTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}
